@@ -21,7 +21,7 @@ const agrotis = createTheme({
     },
     text: {
       primary: '#69747B',
-      secondary: '#828D8C',
+      secondary: '#9E9E9E',
     },
   },
 });
