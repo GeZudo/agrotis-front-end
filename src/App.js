@@ -1,11 +1,14 @@
+import Provider from './context/Provider';
 import './App.css';
 import MaindPage from './page';
 
 function App() {
   return (
-    <div className="App">
-      <MaindPage />
-    </div>
+    <Provider>
+      <div className="App">
+        <MaindPage />
+      </div>
+    </Provider>
   );
 }
 

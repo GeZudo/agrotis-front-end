@@ -15,6 +15,7 @@ const agrotis = createTheme({
     },
     success: {
       main: '#43A047',
+      light: '#43A047',
     },
     background: {
       default: '#E5E5E5',

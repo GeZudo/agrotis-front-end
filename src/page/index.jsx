@@ -5,19 +5,29 @@ import {
 import { ThemeProvider } from '@mui/material/styles';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { useState } from 'react';
+import { useContext } from 'react';
 import FormHeader from '../components/FormHeader';
 import agrotis from '../theme';
 import propriedades from '../helpers/propriedadesOptions';
 import labs from '../helpers/labOptions';
+import sendContext from '../context/sendContext';
+import GreenSnack from '../components/successSnack';
 
 export default function MaindPage() {
-  const [nome, setNome] = useState(null);
-  const [dataInicial, setDataInicial] = useState(null);
-  const [dataFinal, setDataFinal] = useState(null);
-  const [propriedade, setPropriedade] = useState(null);
-  const [laboratorio, setLaboratorio] = useState(null);
-  const [obs, setObs] = useState(null);
+  const {
+    nome,
+    setNome,
+    dataInicial,
+    setDataInicial,
+    dataFinal,
+    setDataFinal,
+    propriedade,
+    setPropriedade,
+    laboratorio,
+    setLaboratorio,
+    obs,
+    setObs,
+  } = useContext(sendContext);
 
   const handleNameChange = ({ target: { value } }) => {
     setNome(value);
@@ -133,6 +143,7 @@ export default function MaindPage() {
             />
           </Grid>
         </Grid>
+        <GreenSnack />
       </ThemeProvider>
     </Paper>
   );
