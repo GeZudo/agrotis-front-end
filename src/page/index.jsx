@@ -9,12 +9,15 @@ import { useState } from 'react';
 import FormHeader from '../components/FormHeader';
 import agrotis from '../theme';
 import propriedades from '../helpers/propriedadesOptions';
+import labs from '../helpers/labOptions';
 
 export default function MaindPage() {
   const [nome, setNome] = useState(null);
   const [dataInicial, setDataInicial] = useState(null);
   const [dataFinal, setDataFinal] = useState(null);
   const [propriedade, setPropriedade] = useState(null);
+  const [laboratorio, setLaboratorio] = useState(null);
+  const [obs, setObs] = useState(null);
 
   const handleNameChange = ({ target: { value } }) => {
     setNome(value);
@@ -22,6 +25,14 @@ export default function MaindPage() {
 
   const handlePropriedadeChange = ({ target: { value } }) => {
     setPropriedade(value);
+  };
+
+  const handleLabChange = ({ target: { value } }) => {
+    setLaboratorio(value);
+  };
+
+  const handleObsChange = ({ target: { value } }) => {
+    setObs(value);
   };
 
   return (
@@ -88,6 +99,38 @@ export default function MaindPage() {
                 </MenuItem>
               ))}
             </TextField>
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              id="laboratorio"
+              label="Laboratório"
+              variant="standard"
+              value={laboratorio}
+              onChange={handleLabChange}
+              select
+              fullWidth
+              required
+            >
+              {labs.map((lab) => (
+                <MenuItem key={lab.id} value={lab.nome}>
+                  {lab.nome}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+        </Grid>
+        <Grid container padding="16px">
+          <Grid item xs={12}>
+            <TextField
+              id="obcervacoes"
+              label="Obcervações"
+              variant="standard"
+              fullWidth
+              multiline
+              rows={5}
+              value={obs}
+              onChange={handleObsChange}
+            />
           </Grid>
         </Grid>
       </ThemeProvider>
