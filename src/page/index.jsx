@@ -12,6 +12,7 @@ import agrotis from '../theme';
 export default function MaindPage() {
   const [nome, setNome] = useState(null);
   const [dataInicial, setDataInicial] = useState(null);
+  const [dataFinal, setDataFinal] = useState(null);
 
   const handleNameChange = ({ target: { value } }) => {
     setNome(value);
@@ -39,6 +40,17 @@ export default function MaindPage() {
                 label="Data Inicial"
                 value={dataInicial}
                 onChange={(newValue) => { setDataInicial(newValue); }}
+                renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+                required
+              />
+            </LocalizationProvider>
+          </Grid>
+          <Grid item xs={3}>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Data Final"
+                value={dataFinal}
+                onChange={(newValue) => { setDataFinal(newValue); }}
                 renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
                 required
               />
