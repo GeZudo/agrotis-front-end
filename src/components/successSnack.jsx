@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import sendContext from '../context/sendContext';
 
 export default function successSnack() {
-  const { open, setOpen } = useContext(sendContext);
+  const { success, setSuccess } = useContext(sendContext);
   const handleClose = () => {
-    setOpen(false);
+    setSuccess(false);
   };
   return (
     <Snackbar
       autoHideDuration={6000}
-      open={open}
+      open={success}
       onClose={handleClose}
       anchorOrigin={{
         vertical: 'bottom',
