@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  Grid, Paper, TextField,
+  Grid, MenuItem, Paper, TextField, Typography,
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
@@ -8,14 +8,20 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { useState } from 'react';
 import FormHeader from '../components/FormHeader';
 import agrotis from '../theme';
+import propriedades from '../helpers/propriedadesOptions';
 
 export default function MaindPage() {
   const [nome, setNome] = useState(null);
   const [dataInicial, setDataInicial] = useState(null);
   const [dataFinal, setDataFinal] = useState(null);
+  const [propriedade, setPropriedade] = useState(null);
 
   const handleNameChange = ({ target: { value } }) => {
     setNome(value);
+  };
+
+  const handlePropriedadeChange = ({ target: { value } }) => {
+    setPropriedade(value);
   };
 
   return (
@@ -55,6 +61,33 @@ export default function MaindPage() {
                 required
               />
             </LocalizationProvider>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} padding="16px">
+          <Grid item xs={6}>
+            <TextField
+              id="Propriedade"
+              label="Propriedade"
+              variant="standard"
+              value={propriedade}
+              onChange={handlePropriedadeChange}
+              select
+              fullWidth
+              required
+            >
+              {propriedades.map((propriedadeItem) => (
+                <MenuItem key={propriedadeItem.CNPJ} value={propriedadeItem.nome}>
+                  <div>
+                    <Typography variant="subtitle1" component="p">
+                      {propriedadeItem.nome}
+                    </Typography>
+                    <Typography variant="caption" component="p" color="secundary">
+                      {propriedadeItem.CNPJ}
+                    </Typography>
+                  </div>
+                </MenuItem>
+              ))}
+            </TextField>
           </Grid>
         </Grid>
       </ThemeProvider>
