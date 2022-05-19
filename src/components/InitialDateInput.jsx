@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import sendContext from '../context/sendContext';
 
 export default function InitialDate() {
-  const { dataInicial, setDataInicial } = useContext(sendContext);
+  const { dataInicial, setDataInicial, noDataInicial } = useContext(sendContext);
 
   return (
     <Grid item xs={3}>
@@ -15,7 +15,16 @@ export default function InitialDate() {
           label="Data Inicial"
           value={dataInicial}
           onChange={(newValue) => { setDataInicial(newValue); }}
-          renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="standard"
+              fullWidth
+              required
+              helperText={noDataInicial && 'Error'}
+              error={noDataInicial}
+            />
+          )}
           required
         />
       </LocalizationProvider>

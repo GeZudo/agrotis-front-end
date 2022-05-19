@@ -6,7 +6,7 @@ import sendContext from '../context/sendContext';
 import labs from '../helpers/labOptions';
 
 export default function LaboratorioMenu() {
-  const { laboratorio, setLaboratorio } = useContext(sendContext);
+  const { laboratorio, setLaboratorio, noLaboratorio } = useContext(sendContext);
 
   const handleLabChange = ({ target: { value } }) => {
     setLaboratorio(value);
@@ -20,6 +20,8 @@ export default function LaboratorioMenu() {
         variant="standard"
         value={laboratorio}
         onChange={handleLabChange}
+        helperText={noLaboratorio && 'Error'}
+        error={noLaboratorio}
         select
         fullWidth
         required

@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import sendContext from '../context/sendContext';
 
 export default function NameInput() {
-  const { nome, setNome } = useContext(sendContext);
+  const { nome, setNome, noName } = useContext(sendContext);
 
   const handleNameChange = ({ target: { value } }) => {
     setNome(value);
@@ -19,7 +19,8 @@ export default function NameInput() {
         required
         onChange={handleNameChange}
         value={nome}
-        helperText={`${nome.length}/40`}
+        helperText={noName ? 'Error' : `${nome.length}/40`}
+        error={noName}
         inputProps={{ maxLength: 40 }}
       />
     </Grid>

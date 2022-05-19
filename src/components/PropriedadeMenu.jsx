@@ -6,7 +6,7 @@ import sendContext from '../context/sendContext';
 import propriedades from '../helpers/propriedadesOptions';
 
 export default function PropriedadeMenu() {
-  const { propriedade, setPropriedade } = useContext(sendContext);
+  const { propriedade, setPropriedade, noPropriedade } = useContext(sendContext);
 
   const handlePropriedadeChange = ({ target: { value } }) => {
     setPropriedade(value);
@@ -20,6 +20,8 @@ export default function PropriedadeMenu() {
         variant="standard"
         value={propriedade}
         onChange={handlePropriedadeChange}
+        helperText={noPropriedade && 'Error'}
+        error={noPropriedade}
         select
         fullWidth
         required

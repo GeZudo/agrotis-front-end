@@ -7,10 +7,15 @@ import propriedades from '../helpers/propriedadesOptions';
 export default function FormHeader() {
   const {
     nome,
+    setNoName,
     dataInicial,
+    setNoDataInicial,
     dataFinal,
+    setNoDataFinal,
     propriedade,
+    setNoPropriedade,
     laboratorio,
+    setNoLaboratorio,
     obs,
     setSuccess,
     setFail,
@@ -31,6 +36,7 @@ export default function FormHeader() {
     },
     observacoes: obs,
   };
+
   const setLabInfo = () => {
     labs.forEach((lab) => {
       if (lab.nome === laboratorio) {
@@ -54,7 +60,16 @@ export default function FormHeader() {
     });
   };
 
+  const setErrors = () => {
+    setNoName(!nome);
+    setNoDataInicial(!dataInicial);
+    setNoDataFinal(!dataFinal);
+    setNoPropriedade(!propriedade);
+    setNoLaboratorio(!laboratorio);
+  };
+
   const handleClick = () => {
+    setErrors();
     setLabInfo();
     setPropInfo();
     if (nome && dataInicial && dataFinal && propriedade && laboratorio) {

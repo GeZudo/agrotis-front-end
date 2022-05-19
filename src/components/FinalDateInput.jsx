@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import sendContext from '../context/sendContext';
 
 export default function FinalDate() {
-  const { dataFinal, setDataFinal } = useContext(sendContext);
+  const { dataFinal, setDataFinal, noDataFinal } = useContext(sendContext);
 
   return (
     <Grid item xs={3}>
@@ -15,7 +15,16 @@ export default function FinalDate() {
           label="Data Final"
           value={dataFinal}
           onChange={(newValue) => { setDataFinal(newValue); }}
-          renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="standard"
+              fullWidth
+              required
+              helperText={noDataFinal && 'Error'}
+              error={noDataFinal}
+            />
+          )}
           required
         />
       </LocalizationProvider>
