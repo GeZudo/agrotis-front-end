@@ -11,8 +11,9 @@ import agrotis from '../theme';
 import propriedades from '../helpers/propriedadesOptions';
 import labs from '../helpers/labOptions';
 import sendContext from '../context/sendContext';
-import SuccessSnack from '../components/successSnack';
-import FailSnack from '../components/failSnack';
+import SuccessSnack from '../components/SuccessSnack';
+import FailSnack from '../components/FailSnack';
+import Header from '../components/Header';
 
 export default function MaindPage() {
   const {
@@ -48,6 +49,7 @@ export default function MaindPage() {
 
   return (
     <ThemeProvider theme={agrotis}>
+      <Header />
       <Paper style={{ maxWidth: '93%' }} square>
         <FormHeader />
         <Grid container spacing={2} padding="16px">

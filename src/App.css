@@ -11,6 +11,11 @@
   padding: 0 16px 0 16px;
 }
 
+.header {
+  width: 100%;
+  align-items: center;
+}
+
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeInherit.css-1vooibu-MuiSvgIcon-root {
   color: white;
 }
