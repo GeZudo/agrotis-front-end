@@ -1,3 +1,7 @@
+body {
+  background-color: #E5E5E5;
+}
+
 .App {
   text-align: center;
 }
@@ -11,9 +15,21 @@
   padding: 0 16px 0 16px;
 }
 
+.form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
 .header {
   width: 100%;
   align-items: center;
+  height: 40px;
+}
+#nome-helper-text, #obcervacoes-helper-text {
+  /* padding: 0 0 0 95%; */
+  margin-left: 95%;
 }
 
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeInherit.css-1vooibu-MuiSvgIcon-root {

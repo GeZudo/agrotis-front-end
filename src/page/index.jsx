@@ -50,103 +50,109 @@ export default function MaindPage() {
   return (
     <ThemeProvider theme={agrotis}>
       <Header />
-      <Paper style={{ maxWidth: '93%' }} square>
-        <FormHeader />
-        <Grid container spacing={2} padding="16px">
-          <Grid item xs={6}>
-            <TextField
-              id="nome"
-              label="Nome"
-              variant="standard"
-              fullWidth
-              required
-              onChange={handleNameChange}
-              value={nome}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                label="Data Inicial"
-                value={dataInicial}
-                onChange={(newValue) => { setDataInicial(newValue); }}
-                renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+      <div className="form-content">
+        <Paper style={{ width: '93%' }} square>
+          <FormHeader />
+          <Grid container spacing={2} padding="16px">
+            <Grid item xs={6}>
+              <TextField
+                id="nome"
+                label="Nome"
+                variant="standard"
+                fullWidth
                 required
+                onChange={handleNameChange}
+                value={nome}
+                helperText={`${nome.length}/40`}
+                inputProps={{ maxLength: 40 }}
               />
-            </LocalizationProvider>
+            </Grid>
+            <Grid item xs={3}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  label="Data Inicial"
+                  value={dataInicial}
+                  onChange={(newValue) => { setDataInicial(newValue); }}
+                  renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+                  required
+                />
+              </LocalizationProvider>
+            </Grid>
+            <Grid item xs={3}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  label="Data Final"
+                  value={dataFinal}
+                  onChange={(newValue) => { setDataFinal(newValue); }}
+                  renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+                  required
+                />
+              </LocalizationProvider>
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                label="Data Final"
-                value={dataFinal}
-                onChange={(newValue) => { setDataFinal(newValue); }}
-                renderInput={(params) => <TextField {...params} variant="standard" fullWidth required />}
+          <Grid container spacing={2} padding="16px">
+            <Grid item xs={6}>
+              <TextField
+                id="Propriedade"
+                label="Propriedade"
+                variant="standard"
+                value={propriedade}
+                onChange={handlePropriedadeChange}
+                select
+                fullWidth
                 required
+              >
+                {propriedades.map((propriedadeItem) => (
+                  <MenuItem key={propriedadeItem.CNPJ} value={propriedadeItem.nome}>
+                    <div>
+                      <Typography variant="subtitle1" component="p">
+                        {propriedadeItem.nome}
+                      </Typography>
+                      <Typography variant="caption" component="p" color="secundary">
+                        {propriedadeItem.CNPJ}
+                      </Typography>
+                    </div>
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="laboratorio"
+                label="Laboratório"
+                variant="standard"
+                value={laboratorio}
+                onChange={handleLabChange}
+                select
+                fullWidth
+                required
+              >
+                {labs.map((lab) => (
+                  <MenuItem key={lab.id} value={lab.nome}>
+                    {lab.nome}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+          </Grid>
+          <Grid container padding="16px" paddingBottom={5}>
+            <Grid item xs={12}>
+              <TextField
+                id="obcervacoes"
+                label="Obcervações"
+                variant="standard"
+                fullWidth
+                multiline
+                rows={5}
+                value={obs}
+                onChange={handleObsChange}
+                helperText={`${obs.length}/1000`}
+                inputProps={{ maxLength: 1000 }}
               />
-            </LocalizationProvider>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container spacing={2} padding="16px">
-          <Grid item xs={6}>
-            <TextField
-              id="Propriedade"
-              label="Propriedade"
-              variant="standard"
-              value={propriedade}
-              onChange={handlePropriedadeChange}
-              select
-              fullWidth
-              required
-            >
-              {propriedades.map((propriedadeItem) => (
-                <MenuItem key={propriedadeItem.CNPJ} value={propriedadeItem.nome}>
-                  <div>
-                    <Typography variant="subtitle1" component="p">
-                      {propriedadeItem.nome}
-                    </Typography>
-                    <Typography variant="caption" component="p" color="secundary">
-                      {propriedadeItem.CNPJ}
-                    </Typography>
-                  </div>
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="laboratorio"
-              label="Laboratório"
-              variant="standard"
-              value={laboratorio}
-              onChange={handleLabChange}
-              select
-              fullWidth
-              required
-            >
-              {labs.map((lab) => (
-                <MenuItem key={lab.id} value={lab.nome}>
-                  {lab.nome}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-        </Grid>
-        <Grid container padding="16px">
-          <Grid item xs={12}>
-            <TextField
-              id="obcervacoes"
-              label="Obcervações"
-              variant="standard"
-              fullWidth
-              multiline
-              rows={5}
-              value={obs}
-              onChange={handleObsChange}
-            />
-          </Grid>
-        </Grid>
-      </Paper>
+        </Paper>
+      </div>
       <SuccessSnack />
       <FailSnack />
     </ThemeProvider>
