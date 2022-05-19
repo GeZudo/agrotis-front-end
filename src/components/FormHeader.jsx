@@ -49,7 +49,7 @@ export default function FormHeader() {
           id: prop.id,
           nome: prop.nome,
         };
-        response.cnpj = propriedade.CPNJ;
+        response.cnpj = prop.CNPJ;
       }
     });
   };
@@ -64,6 +64,7 @@ export default function FormHeader() {
       setFail(true);
     }
   };
+
   return (
     <div className="form-header">
       <Grid container justifyContent="space-between">
