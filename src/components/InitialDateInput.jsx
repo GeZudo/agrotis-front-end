@@ -23,6 +23,7 @@ export default function InitialDate() {
               required
               helperText={noDataInicial && 'Error'}
               error={noDataInicial}
+              className={noDataInicial && 'erro'}
             />
           )}
           required

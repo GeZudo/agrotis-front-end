@@ -22,6 +22,7 @@ export default function PropriedadeMenu() {
         onChange={handlePropriedadeChange}
         helperText={noPropriedade && 'Error'}
         error={noPropriedade}
+        className={noPropriedade && 'erro'}
         select
         fullWidth
         required

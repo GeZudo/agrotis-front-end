@@ -21,6 +21,7 @@ export default function FinalDate() {
               variant="standard"
               fullWidth
               required
+              className={noDataFinal && 'erro'}
               helperText={noDataFinal && 'Error'}
               error={noDataFinal}
             />

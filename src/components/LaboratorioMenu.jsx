@@ -25,6 +25,7 @@ export default function LaboratorioMenu() {
         select
         fullWidth
         required
+        className={noLaboratorio && 'erro'}
       >
         {labs.map((lab) => (
           <MenuItem key={lab.id} value={lab.nome}>
