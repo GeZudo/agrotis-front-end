@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { ptBR } from 'date-fns/locale';
 import { Grid, TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -10,7 +11,7 @@ export default function FinalDate() {
 
   return (
     <Grid item xs={3}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterDateFns} locale={ptBR}>
         <DatePicker
           label="Data Final"
           value={dataFinal}
