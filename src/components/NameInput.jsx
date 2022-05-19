@@ -21,6 +21,7 @@ export default function NameInput() {
         value={nome}
         helperText={noName ? 'Error' : `${nome.length}/40`}
         error={noName}
+        className={noName ? 'erro' : 'name-input'}
         inputProps={{ maxLength: 40 }}
       />
     </Grid>

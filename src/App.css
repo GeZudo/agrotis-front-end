@@ -27,8 +27,17 @@ body {
   align-items: center;
   height: 40px;
 }
-#nome-helper-text, #obcervacoes-helper-text {
-  /* padding: 0 0 0 95%; */
+.css-sd24yf-MuiFormHelperText-root.Mui-error::before {
+  content: '';
+  background-image: url(../src/assets/warning.svg);
+  background-size: 15px 13px;
+  display: inline-block;
+  margin-right: 6px;
+  width: 15px;
+  height: 13px;
+}
+
+.name-input #nome-helper-text, #obcervacoes-helper-text {
   margin-left: 95%;
 }
 
