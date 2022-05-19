@@ -16,8 +16,8 @@ export default function MaindPage() {
 
     <Grid item xs={12}>
       <TextField
-        id="obcervacoes"
-        label="Obcervações"
+        id="observacoes"
+        label="Observações"
         variant="standard"
         fullWidth
         multiline
